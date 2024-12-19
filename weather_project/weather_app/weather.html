@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        input { margin: 10px; padding: 8px; }
+        button { padding: 8px; }
+        .weather { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <form method="get">
+        <input type="text" name="city" placeholder="Enter city" required>
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather.error %}
+        <p style="color: red;">{{ weather.error }}</p>
+    {% else %}
+        <div class="weather">
+            <h2>{{ weather.city }}</h2>
+            <p>{{ weather.temperature }}&deg;C</p>
+            <p>{{ weather.description }}</p>
+            <img src="https://openweathermap.org/img/wn/{{ weather.icon }}@2x.png" alt="Weather Icon">
+        </div>
+    {% endif %}
+</body>
+</html>
